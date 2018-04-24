@@ -187,10 +187,12 @@ html, body, #map {
         featureSet: null
       };
       featureLayer = new FeatureLayer(featureCollection); 
-	  
+      options = {
+  enableHighAccuracy: true
+};
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(zoomToLocation, locationError);
-        navigator.geolocation.watchPosition(showLocation, locationError);
+        navigator.geolocation.getCurrentPosition(zoomToLocation, locationError, options);
+        navigator.geolocation.watchPosition(showLocation, locationError, options);
       }
       
     }
