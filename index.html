@@ -220,35 +220,6 @@ html, body, #map {
     function zoomToLocation(location){
        var pt= webMercatorUtils.geographicToWebMercator(new Point(location.coords.longitude,
         location.coords.latitude));
-
-
-    if(sniff("android") || sniff("ios")){
-
-      if(radiusValue <= 10){
-		map.centerAndZoom(pt, 11);
-		}
-		else if(radiusValue <= 15){
-		map.centerAndZoom(pt, 10);
-		}
-    else if(radiusValue <= 25){
-		map.centerAndZoom(pt, 9);
-		}
-
-
-    }//end of if  
-
-    else {
-		if(radiusValue <= 10){
-		map.centerAndZoom(pt, 13);
-		}
-		else if(radiusValue <= 15){
-		map.centerAndZoom(pt, 12);
-		}
-		else if(radiusValue <= 25){
-		map.centerAndZoom(pt, 11);
-		}
-    
-    }//end of else
 		
     }
 	function addGraphic(pt){
@@ -282,8 +253,40 @@ html, body, #map {
 
         var pt = webMercatorUtils.geographicToWebMercator(new Point(location.coords.longitude,
           location.coords.latitude));
+          if(sniff("android") || sniff("ios")){
+
+        if(radiusValue <= 10){
+        map.centerAndZoom(pt, 11);
+        }
+        else if(radiusValue <= 15){
+        map.centerAndZoom(pt, 10);
+        }
+        else if(radiusValue <= 25){
+        map.centerAndZoom(pt, 9);
+        }
+
+
+        }//end of if  
+
+        else {
+          if(radiusValue <= 5){
+        map.centerAndZoom(pt, 13);
+        }
+        else if(radiusValue <= 10){
+        map.centerAndZoom(pt, 12);
+        }
+        else if(radiusValue <= 23){
+        map.centerAndZoom(pt, 11);
+        }
+        else if(radiusValue >= 24){
+        map.centerAndZoom(pt, 10);
+        }
+
+        }//end of else
+
 		  // graphic for point
 		addGraphic(pt);
+    
 // generate a circle of the radius around location using pt
         qGeom = new Circle(pt, {
                 "radius": radiusValue,
