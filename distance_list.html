@@ -9,15 +9,12 @@
 .range_map_button, .natureserve_explorer, .species_profile_button {
 	margin: 2px;
 	}
-<<<<<<< HEAD
-=======
 .download_csv{
 	margin-right: .25em;
 }
 #bottom_buttons{
 	padding: .25em;
 }
->>>>>>> f591d3dea01d915f6f8e3379fb7c5f3573ab4206
 #exported_on{
 	padding-bottom: 1em;
 	font-size: 14px;
@@ -85,11 +82,7 @@ margin-top: -53px;
 <body>
     <header id="headerArea">
 		<a href="http://www.georgiawildlife.com"><img id="wrd-logo" class="top-button" src="img/wildlife_resources_logo_white.png" title="Georgia Department of Natural Resources, Wildlife Resources Division" alt="Wildlife Resources Logo"></a>
-<<<<<<< HEAD
 		<a href="http://georgiabiodiversity.org/natels/home.html"><img id="portal-logo" class="top-button" src="img/georgia-rare-natural-elements.png" title="Georgia Rare Natural Element Data Portal" alt="Georgia Rare Natural Element Logo"></a>
-=======
-		<a href="home.html"><img id="portal-logo" class="top-button" src="img/georgia-rare-natural-elements.png" title="Georgia Rare Natural Element Data Portal" alt="Georgia Rare Natural Element Logo"></a>
->>>>>>> f591d3dea01d915f6f8e3379fb7c5f3573ab4206
 	</header>
     <section>
 	<h2 id="location">Distance Map List</h2>
@@ -134,10 +127,12 @@ margin-top: -53px;
 	</div>
 	<div id="exported_on"></div>
 	<div id="bottom_buttons">
+
             <a href="#" onclick='JSONToCSVConvertor(recs);'><img src="img/download-csv.png" class="download_csv" alt="Download CSV Button"></a>
-            <a href="http://georgiabiodiversity.org/natels/about-this-data.html">
+            <a href="about-this-data.html">
             <img src="img/what-is-rare-natural-element-data.png">
-            </a>   
+            </a>
+
     </div>
     </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -183,38 +178,22 @@ margin-top: -53px;
 
 				if (value.an_pl == "Animal"){
 					document.getElementById("Animals").style.display = "block";
-<<<<<<< HEAD
-					animalData += "<li>" + '<b><i><span class="sname">' + value.sname + ' </span></i></b>(<span class="scomname">' + value.scomname + ', </span>)' + '<span class="show_rank"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status"><b>Ga:</b> ' + value.sprot + ", <b>US:</b> " + value.usesa + ', </span><span class="show_swap"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat"><b>Habitat: </b>' + value.sshabitat+ '</span><span class="show_profile_link">' + profileLink + '</span><span class ="show_range_map_link">' + rangeLink + '</span><span class ="show_ns_explorer_link"' + exploreLink + "</span></li>";
-=======
 					animalData += "<li>" + '<b><i><span class="sname">' + value.sname + ' </span></i></b>(<span class="scomname">' + value.scomname + ', </span>)' + '<span class="show_rank" title="Global and state rarity ranks"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status" title="Georgia protection status"><b>Ga:</b> ' + value.sprot + '</span>, <span class="show_status" title="U.S. Endangered Species Act Status"><b>US:</b> ' + value.usesa + ', </span><span class="show_swap" title="State Wildlife Action Plan (SWAP) Status for Georgia"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count" title="Number of Element Occurrences (EOs) in Georgia"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat" title="Habitat Summary for Element in Georgia"><b>Habitat: </b>' + value.sshabitat+ '</span><span class="show_profile_link" title="GA-DNR natural element profile report" >' + profileLink + '</span><span class ="show_range_map_link" title="Range map in Georgia using GA-DNR, Biotics element occurence data">' + rangeLink + '</span><span class ="show_ns_explorer_link" title="NatureServe Explorer Report for element"' + exploreLink + "</span></li>";
->>>>>>> f591d3dea01d915f6f8e3379fb7c5f3573ab4206
 
 				}
 				if (value.an_pl == "Plant"){
 					document.getElementById("Plants").style.display = "block";
-<<<<<<< HEAD
-					plantData += "<li>" + '<b><i><span class="sname">' + value.sname + ' </span></i></b>(<span class="scomname">' + value.scomname + ', </span>)' + '<span class="show_rank"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status"><b>Ga:</b> ' + value.sprot + ", <b>US:</b> " + value.usesa + ', </span><span class="show_swap"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat"><b>Habitat: </b>' + value.sshabitat + '</span><span class="show_profile_link">' + profileLink + '</span><span class ="show_range_map_link">' + rangeLink + '</span><span class ="show_ns_explorer_link"' + exploreLink + "</span></li>";
-=======
 					plantData += "<li>" + '<b><i><span class="sname">' + value.sname + ' </span></i></b>(<span class="scomname">' + value.scomname + ', </span>)' + '<span class="show_rank" title="Global and state rarity ranks"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status" title="Georgia protection status"><b>Ga:</b> ' + value.sprot + '</span>, <span class="show_status" title="U.S. Endangered Species Act Status"><b>US:</b> ' + value.usesa + ', </span><span class="show_swap" title="State Wildlife Action Plan (SWAP) Status for Georgia"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count" title="Number of Element Occurrences (EOs) in Georgia"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat" title="Habitat Summary for Element in Georgia"><b>Habitat: </b>' + value.sshabitat+ '</span><span class="show_profile_link" title="GA-DNR natural element profile report" >' + profileLink + '</span><span class ="show_range_map_link" title="Range map in Georgia using GA-DNR, Biotics element occurence data">' + rangeLink + '</span><span class ="show_ns_explorer_link" title="NatureServe Explorer Report for element"' + exploreLink + "</span></li>";
->>>>>>> f591d3dea01d915f6f8e3379fb7c5f3573ab4206
 
 				}
 				if (value.an_pl == "Community"){
 					document.getElementById("Communities").style.display = "block";
-<<<<<<< HEAD
-					communityData += "<li>" + '<b><i><span class="sname">' + value.sname + ' </span></i></b>(<span class="scomname">' + value.scomname + ', </span>)' + '<span class="show_rank"><b> Rank:</b> ' + value.grank + "/" + value.srank +', </span><span class="show_status"><b>Ga:</b> ' + value.sprot + ", <b>US:</b> " + value.usesa + ', </span><span class="show_swap"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat"><b>Habitat: </b>' + value.sshabitat+ '</span><span class="show_profile_link">'  + profileLink + '</span><span class ="show_range_map_link">' + rangeLink + '</span><span class ="show_ns_explorer_link"' + exploreLink + "</span></li>";
-=======
 					communityData += "<li>" + '<b><i><span class="sname">' + value.sname + ' </span></i></b>(<span class="scomname">' + value.scomname + ', </span>)' + '<span class="show_rank" title="Global and state rarity ranks"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status" title="Georgia protection status"><b>Ga:</b> ' + value.sprot + '</span>, <span class="show_status" title="U.S. Endangered Species Act Status"><b>US:</b> ' + value.usesa + ', </span><span class="show_swap" title="State Wildlife Action Plan (SWAP) Status for Georgia"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count" title="Number of Element Occurrences (EOs) in Georgia"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat" title="Habitat Summary for Element in Georgia"><b>Habitat: </b>' + value.sshabitat+ '</span><span class="show_profile_link" title="GA-DNR natural element profile report" >' + profileLink + '</span><span class ="show_range_map_link" title="Range map in Georgia using GA-DNR, Biotics element occurence data">' + rangeLink + '</span><span class ="show_ns_explorer_link" title="NatureServe Explorer Report for element"' + exploreLink + "</span></li>";
->>>>>>> f591d3dea01d915f6f8e3379fb7c5f3573ab4206
 
 				}
 				if (value.an_pl == "Other"){
 					document.getElementById("Other").style.display = "block";
-<<<<<<< HEAD
-					otherData += "<li>" + '<b><i><span class="sname">' + value.sname + ' </span></i></b>(<span class="scomname">' + value.scomname + ', </span>)' + '<span class="show_rank"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status"><b>Ga:</b> ' + value.sprot + ", <b>US:</b> " + value.usesa + ', </span><span class="show_swap"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat"><b>Habitat: </b>' + value.sshabitat + '</span><span class="show_profile_link">' +profileLink + '</span><span class ="show_range_map_link">'+ rangeLink + '</span><span class ="show_ns_explorer_link"' + exploreLink + "</span></li>";
-=======
 					otherData += "<li>" + '<b><i><span class="sname">' + value.sname + ' </span></i></b>(<span class="scomname">' + value.scomname + ', </span>)' + '<span class="show_rank" title="Global and state rarity ranks"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status" title="Georgia protection status"><b>Ga:</b> ' + value.sprot + '</span>, <span class="show_status" title="U.S. Endangered Species Act Status"><b>US:</b> ' + value.usesa + ', </span><span class="show_swap" title="State Wildlife Action Plan (SWAP) Status for Georgia"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count" title="Number of Element Occurrences (EOs) in Georgia"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat" title="Habitat Summary for Element in Georgia"><b>Habitat: </b>' + value.sshabitat+ '</span><span class="show_profile_link" title="GA-DNR natural element profile report" >' + profileLink + '</span><span class ="show_range_map_link" title="Range map in Georgia using GA-DNR, Biotics element occurence data">' + rangeLink + '</span><span class ="show_ns_explorer_link" title="NatureServe Explorer Report for element"' + exploreLink + "</span></li>";
->>>>>>> f591d3dea01d915f6f8e3379fb7c5f3573ab4206
 
 				}
 			});
@@ -237,39 +216,28 @@ margin-top: -53px;
 				if (value.an_pl == "Animal"){
 					document.getElementById("Animals").style.display = "block";
 
-<<<<<<< HEAD
-					scomanimalData +=  "<li>" + '<b><i><span class="scomname">' + value.scomname + ' </span></i></b>(<span class="sname">' + value.sname + ', </span>)' + '<span class="show_rank"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status"><b>Ga:</b> ' + value.sprot + ", <b>US:</b> " + value.usesa + ', </span><span class="show_swap"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat"><b>Habitat: </b>' + value.sshabitat+ '</span><span class="show_profile_link">' + profileLink + '</span><span class ="show_range_map_link">' + rangeLink + '</span><span class ="show_ns_explorer_link"' + exploreLink + "</span></li>";
-=======
 					scomanimalData +=  "<li>" + '<b><i><span class="scomname">' + value.scomname + ' </span></i></b>(<span class="sname">' + value.sname + ', </span>)' + '<span class="show_rank" title="Global and state rarity ranks"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status" title="Georgia protection status"><b>Ga:</b> ' + value.sprot + '</span>, <span class="show_status" title="U.S. Endangered Species Act Status"><b>US:</b> ' + value.usesa + ', </span><span class="show_swap" title="State Wildlife Action Plan (SWAP) Status for Georgia"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count" title="Number of Element Occurrences (EOs) in Georgia"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat" title="Habitat Summary for Element in Georgia"><b>Habitat: </b>' + value.sshabitat+ '</span><span class="show_profile_link" title="GA-DNR natural element profile report" >' + profileLink + '</span><span class ="show_range_map_link" title="Range map in Georgia using GA-DNR, Biotics element occurence data">' + rangeLink + '</span><span class ="show_ns_explorer_link" title="NatureServe Explorer Report for element"' + exploreLink + "</span></li>";
->>>>>>> f591d3dea01d915f6f8e3379fb7c5f3573ab4206
 
 				}
 				if (value.an_pl == "Plant"){
 					document.getElementById("Plants").style.display = "block";
 
-<<<<<<< HEAD
-					scomplantData += "<li>" + '<b><i><span class="scomname">' + value.scomname + ' </span></i></b>(<span class="sname">' + value.sname + ', </span>)' + '<span class="show_rank"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status"><b>Ga:</b> ' + value.sprot + ", <b>US:</b> " + value.usesa + ', </span><span class="show_swap"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat"><b>Habitat: </b>' + value.sshabitat + '</span><span class="show_profile_link">' + profileLink + '</span><span class ="show_range_map_link">' + rangeLink + '</span><span class ="show_ns_explorer_link"' + exploreLink + "</span></li>";
-=======
-					scomplantData += "<li>" + '<b><i><span class="scomname">' + value.scomname + ' </span></i></b>(<span class="sname">' + value.sname + ', </span>)' + '<span class="show_rank" title="Global and state rarity ranks"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status" title="Georgia protection status"><b>Ga:</b> ' + value.sprot + '</span>, <span class="show_status" title="U.S. Endangered Species Act Status"><b>US:</b> ' + value.usesa + ', </span><span class="show_swap" title="State Wildlife Action Plan (SWAP) Status for Georgia"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count" title="Number of Element Occurrences (EOs) in Georgia"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat" title="Habitat Summary for Element in Georgia"><b>Habitat: </b>' + value.sshabitat+ '</span><span class="show_profile_link" title="GA-DNR natural element profile report" >' + profileLink + '</span><span class ="show_range_map_link" title="Range map in Georgia using GA-DNR, Biotics element occurence data">' + rangeLink + '</span><span class ="show_ns_explorer_link" title="NatureServe Explorer Report for element"' + exploreLink + "</span></li>";
->>>>>>> f591d3dea01d915f6f8e3379fb7c5f3573ab4206
+
+					scomplantData += "<li>" + '<b><i><span class="scomname">' + value.scomname + ' </span></i></b>(<span class="scomname">' + value.sname + ', </span>)' + '<span class="show_rank" title="Global and state rarity ranks"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status" title="Georgia protection status"><b>Ga:</b> ' + value.sprot + '</span>, <span class="show_status" title="U.S. Endangered Species Act Status"><b>US:</b> ' + value.usesa + ', </span><span class="show_swap" title="State Wildlife Action Plan (SWAP) Status for Georgia"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count" title="Number of Element Occurrences (EOs) in Georgia"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat" title="Habitat Summary for Element in Georgia"><b>Habitat: </b>' + value.sshabitat+ '</span><span class="show_profile_link" title="GA-DNR natural element profile report" >' + profileLink + '</span><span class ="show_range_map_link" title="Range map in Georgia using GA-DNR, Biotics element occurence data">' + rangeLink + '</span><span class ="show_ns_explorer_link" title="NatureServe Explorer Report for element"' + exploreLink + "</span></li>";
+
 				}
 				if (value.an_pl == "Community"){
 					document.getElementById("Communities").style.display = "block";
 
-<<<<<<< HEAD
-					scomcommunityData += "<li>" + '<b><i><span class="scomname">' + value.scomname + ' </span></i></b>(<span class="sname">' + value.sname + ', </span>)' + '<span class="show_rank"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status"><b>Ga:</b> ' + value.sprot + ", <b>US:</b> " + value.usesa + ', </span><span class="show_swap"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat"><b>Habitat: </b>' + value.sshabitat + '</span><span class="show_profile_link">' + profileLink + '</span><span class ="show_range_map_link">' + rangeLink + '</span><span class ="show_ns_explorer_link"' + exploreLink + "</span></li>";
-=======
-					scomcommunityData += "<li>" + '<b><i><span class="scomname">' + value.scomname + ' </span></i></b>(<span class="sname">' + value.sname + ', </span>)' + '<span class="show_rank" title="Global and state rarity ranks"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status" title="Georgia protection status"><b>Ga:</b> ' + value.sprot + '</span>, <span class="show_status" title="U.S. Endangered Species Act Status"><b>US:</b> ' + value.usesa + ', </span><span class="show_swap" title="State Wildlife Action Plan (SWAP) Status for Georgia"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count" title="Number of Element Occurrences (EOs) in Georgia"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat" title="Habitat Summary for Element in Georgia"><b>Habitat: </b>' + value.sshabitat+ '</span><span class="show_profile_link" title="GA-DNR natural element profile report" >' + profileLink + '</span><span class ="show_range_map_link" title="Range map in Georgia using GA-DNR, Biotics element occurence data">' + rangeLink + '</span><span class ="show_ns_explorer_link" title="NatureServe Explorer Report for element"' + exploreLink + "</span></li>";
->>>>>>> f591d3dea01d915f6f8e3379fb7c5f3573ab4206
+
+					scomcommunityData += "<li>" + '<b><i><span class="scomname">' + value.scomname + ' </span></i></b>(<span class="scomname">' + value.sname + ', </span>)' + '<span class="show_rank" title="Global and state rarity ranks"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status" title="Georgia protection status"><b>Ga:</b> ' + value.sprot + '</span>, <span class="show_status" title="U.S. Endangered Species Act Status"><b>US:</b> ' + value.usesa + ', </span><span class="show_swap" title="State Wildlife Action Plan (SWAP) Status for Georgia"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count" title="Number of Element Occurrences (EOs) in Georgia"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat" title="Habitat Summary for Element in Georgia"><b>Habitat: </b>' + value.sshabitat+ '</span><span class="show_profile_link" title="GA-DNR natural element profile report" >' + profileLink + '</span><span class ="show_range_map_link" title="Range map in Georgia using GA-DNR, Biotics element occurence data">' + rangeLink + '</span><span class ="show_ns_explorer_link" title="NatureServe Explorer Report for element"' + exploreLink + "</span></li>";
+
 				}
 				if (value.an_pl == "Other"){
 					document.getElementById("Other").style.display = "block";
 
-<<<<<<< HEAD
-					scomotherData += "<li>" + '<b><i><span class="scomname">' + value.scomname + ' </span></i></b>(<span class="sname">' + value.sname + ', </span>)' + '<span class="show_rank"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status"><b>Ga:</b> ' + value.sprot + ", <b>US:</b> " + value.usesa + ', </span><span class="show_swap"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat"><b>Habitat: </b>' + value.sshabitat + '</span><span class="show_profile_link">' + profileLink + '</span><span class ="show_range_map_link">' + rangeLink + '</span><span class ="show_ns_explorer_link"' + exploreLink + "</span></li>";
-=======
-					scomotherData += "<li>" + '<b><i><span class="scomname">' + value.scomname + ' </span></i></b>(<span class="sname">' + value.sname + ', </span>)' + '<span class="show_rank" title="Global and state rarity ranks"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status" title="Georgia protection status"><b>Ga:</b> ' + value.sprot + '</span>, <span class="show_status" title="U.S. Endangered Species Act Status"><b>US:</b> ' + value.usesa + ', </span><span class="show_swap" title="State Wildlife Action Plan (SWAP) Status for Georgia"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count" title="Number of Element Occurrences (EOs) in Georgia"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat" title="Habitat Summary for Element in Georgia"><b>Habitat: </b>' + value.sshabitat+ '</span><span class="show_profile_link" title="GA-DNR natural element profile report" >' + profileLink + '</span><span class ="show_range_map_link" title="Range map in Georgia using GA-DNR, Biotics element occurence data">' + rangeLink + '</span><span class ="show_ns_explorer_link" title="NatureServe Explorer Report for element"' + exploreLink + "</span></li>";
->>>>>>> f591d3dea01d915f6f8e3379fb7c5f3573ab4206
+					scomotherData += "<li>" + '<b><i><span class="scomname">' + value.scomname + ' </span></i></b>(<span class="scomname">' + value.sname + ', </span>)' + '<span class="show_rank" title="Global and state rarity ranks"><b> Rank:</b> ' + value.grank + "/" + value.srank +',</span> <span class="show_status" title="Georgia protection status"><b>Ga:</b> ' + value.sprot + '</span>, <span class="show_status" title="U.S. Endangered Species Act Status"><b>US:</b> ' + value.usesa + ', </span><span class="show_swap" title="State Wildlife Action Plan (SWAP) Status for Georgia"><b>SWAP:</b> ' + swapStatus + ', </span> <span class = "show_eo_count" title="Number of Element Occurrences (EOs) in Georgia"><b>EOs:</b> ' + value.eo_count + ', </span><span class="show_sshabitat" title="Habitat Summary for Element in Georgia"><b>Habitat: </b>' + value.sshabitat+ '</span><span class="show_profile_link" title="GA-DNR natural element profile report" >' + profileLink + '</span><span class ="show_range_map_link" title="Range map in Georgia using GA-DNR, Biotics element occurence data">' + rangeLink + '</span><span class ="show_ns_explorer_link" title="NatureServe Explorer Report for element"' + exploreLink + "</span></li>";
+
 				}
 			});
 			// sorts the sname and comname based on radio button
@@ -313,57 +281,108 @@ margin-top: -53px;
 				}
 				return 0;
 				}
-<<<<<<< HEAD
+
+
 					}
-=======
-			
+				function convertArrayOfObjectsToCSV(args) {
+				var result, ctr, keys, columnDelimiter, lineDelimiter, data;
+
+				data = args.data || null;
+				if (data == null || !data.length) {
+					return null;
+				}
+
+				columnDelimiter = args.columnDelimiter || ',';
+				lineDelimiter = args.lineDelimiter || '\n';
+
+				keys = Object.keys(data[0]);
+
+				result = '';
+				result += keys.join(columnDelimiter);
+				result += lineDelimiter;
+
+				data.forEach(function(item) {
+					ctr = 0;
+					keys.forEach(function(key) {
+						if (ctr > 0) result += columnDelimiter;
+
+						result += item[key];
+						ctr++;
+					});
+					result += lineDelimiter;
+				});
+
+				return result;
+    				}
+
+			function downloadCSV(args) {
+				var data, filename, link;
+				var csv = convertArrayOfObjectsToCSV({
+					data: localStorage.getItem("radiusmap")
+				});
+				if (csv == null) return;
+
+				filename = args.filename || 'export.csv';
+
+				if (!csv.match(/^data:text\/csv/i)) {
+					csv = 'data:text/csv;charset=utf-8,' + csv;
+				}
+				data = encodeURI(csv);
+
+				link = document.createElement('a');
+				link.setAttribute('href', data);
+				link.setAttribute('download', filename);
+				link.click();
 					}
-				
+
+
+					}
+
 			function JSONToCSVConvertor(JSONData) {
 				//If JSONData is not an object then JSON.parse will parse the JSON string in an Object
 				var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
-				var CSV = '';    		
+				var CSV = '';
 					var row = "";
 					// loop through all fields to grab headers
 					for (var index in arrData.fields) {
-						
+
 						row += index + ',';
 					}
-				
+
 					//row = row.slice(0, -1);
-					
+
 					//append Label row with line break
 					CSV += row + '\r\n';
 					//loop through all rows to grab data
 					$.each(arrData.rows, function(key, value){
-					CSV += value.elcode + ',"' + value.an_pl + '","' + value.es_id + '","' + value.sname + '","' + value.gname + '","' + value.scomname + '","' + value.exportdate + '","' + value.sprot + '","' + value.usesa + '","' + value.srank + '","' + value.grank + '","' + value.sgenus + '","' + value.sshabitat + '","' + value.header_group + '","' + value.eo_count + '","' + value.fus_tab_id + '","' + value.swapstatus + '",' + '\r\n';			
+					CSV += value.elcode + ',"' + value.an_pl + '","' + value.es_id + '","' + value.sname + '","' + value.gname + '","' + value.scomname + '","' + value.exportdate + '","' + value.sprot + '","' + value.usesa + '","' + value.srank + '","' + value.grank + '","' + value.sgenus + '","' + value.sshabitat + '","' + value.header_group + '","' + value.eo_count + '","' + value.fus_tab_id + '","' + value.swapstatus + '",' + '\r\n';
 					})
 
-				if (CSV == '') {        
+				if (CSV == '') {
 					alert("Invalid data");
 					return;
-				}   
-				
+				}
+
 				//Generate a file name
-				var fileName = "SpeciesReport"; 
-				
+				var fileName = "SpeciesReport";
+
 				//Initialize file format you want csv or xls
-				var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);   
-				
+				var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+
 				//this trick will generate a temp <a /> tag
-				var link = document.createElement("a");    
+				var link = document.createElement("a");
 				link.href = uri;
-				
+
 				//set the visibility hidden so it will not effect on your web-layout
 				link.style = "visibility:hidden";
 				link.download = fileName + ".csv";
-				
+
 				//this part will append the anchor tag and remove it after automatic click
 				document.body.appendChild(link);
 				link.click();
 				document.body.removeChild(link);
 			}
->>>>>>> f591d3dea01d915f6f8e3379fb7c5f3573ab4206
+
 
 			document.getElementById('row_count').innerHTML = rowNum;
 			document.getElementById('animalList').innerHTML = animalData;
@@ -371,7 +390,7 @@ margin-top: -53px;
 			document.getElementById('communityList').innerHTML = communityData;
 			document.getElementById('otherList').innerHTML = otherData;
 			document.getElementById('exported_on').innerHTML = 'Element records are selected from  generalized quarter quad EO data that was exported from <a href="http://www.georgiawildlife.com/conservation/species-of-concern">GA-DNR Database</a> on ' + exportDate;
-			}
+
 </script>
 </body>
 </html>
