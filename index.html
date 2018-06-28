@@ -70,7 +70,7 @@ html, body, #map {
 #results{
     right:0px;
     top:0px;
-	font-size: 80%; 
+	font-size: 80%;
 }
 
 
@@ -78,7 +78,7 @@ html, body, #map {
 @media screen and (max-height:500px) {
 
 #results{
-  font-size: 80%;  
+  font-size: 80%;
 }
 
 #export_date{
@@ -104,7 +104,7 @@ html, body, #map {
     "esri/symbols/SimpleLineSymbol",
     "esri/symbols/SimpleFillSymbol",
     "esri/symbols/SimpleMarkerSymbol",
-    "esri/tasks/query", 
+    "esri/tasks/query",
     "esri/tasks/QueryTask",
     "esri/geometry/Circle",
     "esri/TimeExtent",
@@ -125,7 +125,7 @@ html, body, #map {
         var map, featureLayer, qGeom, accuracy, zoomLevel;
         var OBJECTID_COUNTER = 1000;
         var TRACKID_COUNTER = 1;
-        
+
         //onorientationchange doesn't always fire in a timely manner in Android so check for both orientationchange and resize
         var supportsOrientationChange = "onorientationchange" in window, orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
 
@@ -154,7 +154,7 @@ html, body, #map {
 
         function mapLoadedHandler(maploadEvent){
             console.log("map loaded", maploadEvent);
-            
+
 
             //create a layer definition for the gps points
       var layerDefinition = {
@@ -192,7 +192,7 @@ html, body, #map {
         layerDefinition: layerDefinition,
         featureSet: null
       };
-      featureLayer = new FeatureLayer(featureCollection); 
+      featureLayer = new FeatureLayer(featureCollection);
       options = {
   enableHighAccuracy: true
 };
@@ -200,11 +200,11 @@ html, body, #map {
         navigator.geolocation.getCurrentPosition(zoomToLocation, locationError, options);
         navigator.geolocation.watchPosition(showLocation, locationError, options);
       }
-      
+
     }
 
     function county(results){
-        onClickCounty = results.features[0].attributes.area_name;		
+        onClickCounty = results.features[0].attributes.area_name;
         }
 
     function locationError(error){
@@ -226,23 +226,23 @@ html, body, #map {
           break;
       }
     }
-     
+
     function zoomToLocation(location){
        crdx = location.coords.longitude;
        crdy = location.coords.latitude;
        var pt= webMercatorUtils.geographicToWebMercator(new Point(location.coords.longitude,
         location.coords.latitude));
-		
+
     }
 	function addGraphic(pt){
           var symbol = new SimpleMarkerSymbol(
-            SimpleMarkerSymbol.STYLE_CIRCLE, 
-            12, 
+            SimpleMarkerSymbol.STYLE_CIRCLE,
+            12,
             new SimpleLineSymbol(
               SimpleLineSymbol.STYLE_SOLID,
-              new Color([210, 105, 30, 0.5]), 
+              new Color([210, 105, 30, 0.5]),
               1
-            ), 
+            ),
             new Color([210, 105, 30, 0.9])
           );
           graphic = new Graphic(pt, symbol);
@@ -251,10 +251,10 @@ html, body, #map {
     function getURLParameter(name) {
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null
     }
-    
+
     function showLocation(location){
 		map.graphics.clear();
-		
+
         var now = new Date();
         var attributes = {};
         attributes.OBJECTID = OBJECTID_COUNTER;
@@ -279,7 +279,7 @@ html, body, #map {
         }
 
 
-        }//end of if  
+        }//end of if
 
         else {
           if(radiusValue <= 5){
@@ -299,7 +299,7 @@ html, body, #map {
 
 		  // graphic for point
 		addGraphic(pt);
-    
+
 // generate a circle of the radius around location using pt
         qGeom = new Circle(pt, {
                 "radius": radiusValue,
@@ -319,9 +319,14 @@ var circleGra = new Graphic(qGeom, new SimpleFillSymbol(SimpleFillSymbol.STYLE_S
           map.centerAt(graphic.geometry);
           //qGeom will draw a circle and allow a adjustable radius while pt will only select quarterquad on that  specific coords
           qParcels.geometry = qGeom;
+          // workaround to query county
+          cParcels.geometry = new Circle(pt, {
+                  "radius": 1,
+                  "spatialReference": pt.spatialReference,
+              });
           accuracy = location.coords.accuracy;
            // use .then to make a promise to run after county is found
-            ctParcels.execute(qParcels, county).then(function(){
+            ctParcels.execute(cParcels, county).then(function(){
             qtParcels.execute(qParcels, handleQueryResults);
             })
         });
@@ -335,19 +340,19 @@ var circleGra = new Graphic(qGeom, new SimpleFillSymbol(SimpleFillSymbol.STYLE_S
       var elNumber = [];
       var exportdate;
             arrayUtils.forEach(results.features, function (feat) {
-            
+
             elNumber.push(feat.attributes["es_id"]);
             });
             var elNumber = elNumber.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
-            
+
             $.getJSON('https://gakrakow.cartodb.com/api/v2/sql?q= SELECT elcode,an_pl, es_id, sname, gname, scomname, exportdate, sprot, usesa, srank, grank, sgenus, sshabitat, header_group, eo_count, sshabitat, fus_tab_id, swapstatus FROM es_web_all es WHERE seotrack IN (%27Y%27,%27W%27,%27P%27) AND es_id in ('+ elNumber + ') ORDER BY sname', function(data){
 			exportdate = data.rows[0].exportdate;
             localStorage.setItem("radiusmap", JSON.stringify(data));
-			dom.byId("results").innerHTML = '<p><b>A total of <i>' + elNumber.length + '</i> elements have been identified within ' + radiusValue + " " + distValue.substring(4) + " of the coordinates " + "(WGS84:" + crdx.toFixed(3) + ", " + crdy.toFixed(3) + ')  using Quarter Quad data.</b> <a href = "distance_list.html" target="_blank" ></p>More detailed list click here</a><p id="export_date">Data exported from <a href="http://www.georgiawildlife.com/conservation/species-of-concern">GA-DNR Database</a> on ' + exportdate + "</p>";
+			dom.byId("results").innerHTML = '<p><b>A total of <i>' + elNumber.length + '</i> elements have been identified within ' + radiusValue + " " + distValue.substring(4) + " of the coordinates " + crdx.toFixed(3) + ", " + crdy.toFixed(3) + "(WGS84)" +  ' using Quarter Quad data.</b> <a href = "distance_list.html" target="_blank" ></p>More detailed list click here</a><p id="export_date">Data exported from <a href="http://www.georgiawildlife.com/conservation/species-of-concern">GA-DNR Database</a> on ' + exportdate + "</p>";
 			if (accuracy >= 500) {
 			$("#results").prepend('<p id="accuracy">*Device returning inaccurate results (over 500 meters).</p>')
 			}
-			var radiusLocation = "Rare natural elements within " + radiusValue + " miles of " + crdx.toFixed(3) + ", " + crdy.toFixed(3) + " (WGS84) " + onClickCounty + " County, GA, using Quarter Quad data";
+			var radiusLocation = "Rare natural elements within " + radiusValue + " miles of " + crdx.toFixed(3) + ", " + crdy.toFixed(3) + "(WGS84) " + onClickCounty + " County, GA, using Quarter Quad data";
             localStorage.setItem("radiusLocation", radiusLocation);
             });
     }
@@ -358,7 +363,7 @@ var circleGra = new Graphic(qGeom, new SimpleFillSymbol(SimpleFillSymbol.STYLE_S
         map.resize();
       }
     }
-    
+
       });
     </script>
   </head>
