@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <title>Location Map</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://js.arcgis.com/3.23/esri/css/esri.css">
@@ -19,11 +20,29 @@ html, body, #map {
 #accuracy{
 	color: red;
 	font-size: 9px;
+    font-family: 'Montserrat', sans-serif;
 }
+h2, h1{
+margin: 0;
+text-align: center;
+}
+a.stylelink:link, a.stylelink:visited {
+    border-radius: 15px;
+    background-color: lightgray;
+    color: black;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+a.stylelink:hover, a.stylelink:active {
+    background-color: #878787;
+}
+
 #dnr_logo {
         background-image: url(img/georgia-rare-natural-elements-half-size.png);
         background-repeat: no-repeat;
-        background-size:contain;
+        background-size: contain;
         background-color: white;
         border-style: solid;
         border-color: #999;
@@ -63,11 +82,11 @@ html, body, #map {
 #title{
 	position: absolute;
 	font-size: 10px;
-	top: 18px;
+	top: 12px;
 	left: 60px;
-    font-family: arial;
+    font-family: 'Montserrat', sans-serif;
     margin: 5px;
-    padding: 5px;
+    padding: 12px;
     z-index: 40;
     background: #fff;
     color: #444;
@@ -84,13 +103,13 @@ html, body, #map {
 #export_date{
     font-size: 12px;
 }
-	  #results {
+#results {
     position: absolute;
-    font-family: arial;
+    font-family: 'Montserrat', sans-serif;
     right: 10px;
-    top: 10px;
+    top: 12px;
     margin: 5px;
-    padding: 5px;
+    padding: 10px;
     z-index: 40;
     background: #fff;
     color: #444;
@@ -418,17 +437,12 @@ var circleGra = new Graphic(qGeom, new SimpleFillSymbol(SimpleFillSymbol.STYLE_S
 			exportdate = data.rows[0].exportdate;
             localStorage.setItem("radiusmap", JSON.stringify(data));
 
-			dom.byId("results").innerHTML = '<p><b>A total of <i>' + elNumber.length + '</i> elements have been identified within ' + radiusValue + " " + distValue.substring(4) + " of the coordinates " + crdx.toFixed(3) + ", " + crdy.toFixed(3) + "(WGS84)" +  ' using Quarter Quad data.</b> <a href = "distance_list.html" target="_blank" ></p>More detailed list click here</a><p id="export_date">Data exported from <a href="http://www.georgiawildlife.com/conservation/species-of-concern">GA-DNR Database</a> on ' + exportdate + "</p>";
-			if (accuracy >= 500) {
-			$("#results").prepend('<p id="accuracy">*Device returning inaccurate results (over 500 meters).</p>')
-			}
-			var radiusLocation = "Rare natural elements within " + radiusValue + " miles of " + crdx.toFixed(3) + ", " + crdy.toFixed(3) + "(WGS84) " + onClickCounty + " County, GA, using Quarter Quad data";
 
-			dom.byId("results").innerHTML = '<p><b>A total of <i>' + elNumber.length + '</i> elements have been identified within ' + radiusValue + " " + distValue.substring(4) + " of the coordinates " + " " + crdx.toFixed(3) + ", " + crdy.toFixed(3) + ' (WGS84)  using generalized quarter quad locations.</b> <a href = "distance_list.html" target="_blank" ></p>Click for more detailed list</a><p id="export_date">Data exported from <a href="http://www.georgiawildlife.com/conservation/species-of-concern">GA-DNR Database</a> on ' + exportdate + "</p>";
+			dom.byId("results").innerHTML = '<p><b>A total of <i>' + elNumber.length + '</i> elements have been identified within ' + radiusValue + " " + distValue.substring(4) + " of the coordinates " + " " + crdx.toFixed(3) + ", " + crdy.toFixed(3) + ' (WGS84).</b></p><a href = "distance_list.html" target="_blank" class="stylelink" >Click for more detailed list</a><p id="export_date">Data exported from <a href="http://www.georgiawildlife.com/conservation/species-of-concern">GA-DNR Database</a> on ' + exportdate + "</p>";
 			if (accuracy >= 500) {
 			$("#results").prepend('<p id="accuracy">*Device returning inaccurate results (over 500 meters).</p>')
 			}
-			var radiusLocation = "Rare natural elements within " + radiusValue + " miles of " + crdx.toFixed(3) + ", " + crdy.toFixed(3) + " (WGS84) " + onClickCounty + " County, GA, using generalized quarter quad locations";
+			var radiusLocation = "Rare natural elements within " + radiusValue + " miles of " + crdx.toFixed(3) + ", " + crdy.toFixed(3) + " (WGS84) " + onClickCounty + " County, GA.";
 
             localStorage.setItem("radiusLocation", radiusLocation);
             });
@@ -451,7 +465,8 @@ var circleGra = new Graphic(qGeom, new SimpleFillSymbol(SimpleFillSymbol.STYLE_S
 	<a href="home.html"><div id="dnr_logo"></div></a>
     <a href="http://georgiawildlife.com/"><div id="wrd_logo"></div></a>
 	<div id="title">
-			<h2>Search for elements near me</h2>
+			<h1>Search for elements near me</h1>
+            <h2>Uses generalized quarter quad locations</h2>
 	</div>
   </body>
 </html>
