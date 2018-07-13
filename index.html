@@ -22,6 +22,40 @@ html, body, #map {
 	font-size: 9px;
     font-family: 'Montserrat', sans-serif;
 }
+.rememberbox{
+  position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.exitbutton{
+  position:absolute;
+  right:0;
+  top:0;
+}
+.alertmessage{
+  position: absolute;
+  font-size: 14pt;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  transform: translateX(-50%) translateY(-50%);
+}
+.alertheading{
+  margin-top:15%;
+}
+#popup {
+    width: 350px;
+    height: 350px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(108, 117, 88);
+    border: 5px solid #000;
+    margin: auto;
+    color: #effdce;
+    position:fixed;
+}
 h2, h1{
 margin: 0;
 text-align: center;
@@ -205,6 +239,7 @@ display: none;
       var radiusValue =  getURLParameter('distance') ;
 	  // check if url gives values and if not set some defaults
       var crdx,crdy;
+      console.log(crdx);
       var onClickCounty;
 	  if (radiusValue == undefined || distValue == undefined){
 		radiusValue = 3;
@@ -317,10 +352,10 @@ display: none;
 
     function zoomToLocation(location){
        crdx = location.coords.longitude;
+       console.log(crdx);
        crdy = location.coords.latitude;
        var pt= webMercatorUtils.geographicToWebMercator(new Point(location.coords.longitude,
         location.coords.latitude));
-
     }
 	function addGraphic(pt){
           var symbol = new SimpleMarkerSymbol(
@@ -457,6 +492,32 @@ var circleGra = new Graphic(qGeom, new SimpleFillSymbol(SimpleFillSymbol.STYLE_S
 
       });
     </script>
+    <script>
+    // pop up functions
+    function show_dialog(){
+      var checked = JSON.parse(localStorage.getItem('rememberbox'));
+      if (checked == true) {
+      document.getElementById('popup').style.display = "none";
+      }
+      else
+      document.getElementById('popup').style.display = "block";
+    }
+    function hide_dialog(){
+        document.getElementById('popup').style.display = "none";
+        var checkbox = document.getElementById('rememberbox');
+        if(document.getElementById('rememberbox').checked) {
+        localStorage.setItem('rememberbox', true);
+        }
+        else
+        {
+        localStorage.setItem('rememberbox', false);
+        }
+    }
+    $(document).ready(function(){
+      show_dialog()
+    })
+    // pop ends
+    </script>
   </head>
 
   <body>
@@ -468,5 +529,18 @@ var circleGra = new Graphic(qGeom, new SimpleFillSymbol(SimpleFillSymbol.STYLE_S
 			<h1>Search for elements near me</h1>
             <h2>Uses generalized quarter quad locations</h2>
 	</div>
+  <div id="popup" style='display:none'>
+    <div class = "exitbutton">
+    <button onclick="hide_dialog()">X</button>
+    </div>
+    <div class = "alertheading">
+    <h2 style="color:darkred">Alert</h2>
+    </div>
+    <div class="alertmessage">
+    The results displayed from this elements near current location utility do not return precise locations. Locations have been generalized to the quarter quad level to protect the resources.
+    </div>
+  <div class="rememberbox">
+  <input type="checkbox" id="rememberbox">Do not show this dialog again</input>
+</div>
   </body>
 </html>
